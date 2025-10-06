@@ -23,14 +23,6 @@ A modern, responsive portfolio website showcasing AI/ML projects and skills.
 - **LinkedIn**: [Sakshi Tiwari](https://www.linkedin.com/in/sakshi-tiwari-6464522ab)
 - **GitHub**: [sakshitiwariii](https://github.com/sakshitiwariii)
 
----
-
-*B.Tech CSE AI Student | AI/ML Enthusiast*
-To add this README to your project:
-bash
-# Create and add README.md
-echo "# AI Portfolio - Sakshi Tiwari
-
 A modern, responsive portfolio website showcasing AI/ML projects and skills.
 
 ## 🌐 Live Demo
