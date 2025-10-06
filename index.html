@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakshi Tiwari - AI Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .navbar {
+            background: var(--bg-white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-image i {
+            font-size: 8rem;
+            color: white;
+            opacity: 0.3;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-right: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-date {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: var(--bg-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--bg-light);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background: var(--bg-white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+        }
+
+        .certificate-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .certificate-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .certificate-org {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Sakshi Tiwari</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hi, I'm Sakshi Tiwari</h1>
+                <h2>AI & Machine Learning Enthusiast</h2>
+                <p>B.Tech CSE student specializing in Artificial Intelligence, passionate about building innovative solutions with ML, Deep Learning, and Generative AI.</p>
+                <a href="#contact" class="btn">Get In Touch</a>
+                <a href="#projects" class="btn btn-outline">View Projects</a>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-robot"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div style="background: var(--bg-white); padding: 3rem; border-radius: 15px; box-shadow: var(--shadow);">
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light); margin-bottom: 2rem;">
+                A highly motivated and enthusiastic B.Tech Computer Science Engineering student with a specialization in Artificial Intelligence. 
+                Seeking a challenging role to apply my foundational knowledge in machine learning, data analysis, and programming to contribute to 
+                innovative projects and grow my skills in a professional environment.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div>
+                    <strong style="color: var(--primary);">Location:</strong>
+                    <p>Indore, Madhya Pradesh</p>
+                </div>
+                <div>
+                    <strong style="color: var(--primary);">Education:</strong>
+                    <p>Medicaps University</p>
+                </div>
+                <div>
+                    <strong style="color: var(--primary);">CGPA:</strong>
+                    <p>7.67 / 10</p>
+                </div>
+                <div>
+                    <strong style="color: var(--primary);">Graduation:</strong>
+                    <p>2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section" style="background: var(--bg-white);">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fab fa-python"></i>
+                <p>Python</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-java"></i>
+                <p>Java</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-brain"></i>
+                <p>Machine Learning</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-project-diagram"></i>
+                <p>Deep Learning</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-robot"></i>
+                <p>Gen AI</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-database"></i>
+                <p>SQL</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-git-alt"></i>
+                <p>Git/Github</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-docker"></i>
+                <p>Docker</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-aws"></i>
+                <p>AWS</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-chart-line"></i>
+                <p>Tableau</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-code-branch"></i>
+                <p>Data Structures</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Legal-AI</h3>
+                    <p class="project-date">Sep 2025</p>
+                </div>
+                <div class="project-body">
+                    <p>Developed an AI application using RAG (Retrieval-Augmented Generation) with LangChain and OpenAI API to provide accessible legal information from Indian statutes.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">ChromaDB</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">OpenAI</span>
+                    </div>
+                    <a href="https://github.com/sakshitiwariii/Legal-AI" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">StandUP Facilitator Agent</h3>
+                    <p class="project-date">Jul - Sep 2025</p>
+                </div>
+                <div class="project-body">
+                    <p>Engineered an automated agent to streamline stand-up meetings by aggregating data, automating communication, and facilitating asynchronous updates across multiple platforms.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">Groq API</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                    </div>
+                    <a href="https://github.com/sakshitiwariii/StandUp-Facilitator-Agent" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">TruthGuard AI</h3>
+                    <p class="project-date">Jul - Aug 2025</p>
+                </div>
+                <div class="project-body">
+                    <p>Developed a hybrid deep learning model using ResNet50 for spatial feature extraction and LSTM network for temporal analysis to accurately detect deepfake videos.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Keras</span>
+                        <span class="tech-tag">ResNet50</span>
+                        <span class="tech-tag">LSTM</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                    <a href="https://github.com/sakshitiwariii/TruthGuard_AI" class="project-link" target="_blank">
+                        View Project <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section" style="background: var(--bg-white);">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Backend Developer</h3>
+                <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Exicom</strong> | Jun - Aug 2024</p>
+                <ul style="color: var(--text-light); padding-left: 1.5rem;">
+                    <li>Accelerated the development of a "Smart EV Charger Network Management" system by building and implementing robust machine learning pipelines from data collection to deployment.</li>
+                    <li>Enhanced backend system capabilities by integrating AI models that enabled critical features for optimizing charger uptime and energy distribution.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">CCNA Internship</h3>
+                <p style="color: var(--text-light); margin-bottom: 1rem;"><strong>Academics / Research</strong> | Jun - Jul 2025</p>
+                <ul style="color: var(--text-light); padding-left: 1.5rem;">
+                    <li>Configured, troubleshot, and simulated diverse network topologies using Cisco Packet Tracer.</li>
+                    <li>Applied core principles of routing, switching, and essential network protocols (TCP/IP, DNS, DHCP).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="section">
+        <h2 class="section-title">Certifications</h2>
+        <div class="certificates-grid">
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 class="certificate-title">OCI Generative AI Certification</h3>
+                <p class="certificate-org">Oracle Cloud Infrastructure</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">LLM Architectures, Prompt Engineering, Fine-tuning, RAG, Vector Databases</p>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3 class="certificate-title">OCI AI Foundations Associate</h3>
+                <p class="certificate-org">Oracle Cloud Infrastructure</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Machine Learning, Deep Learning, Generative AI, LLMs, RAG</p>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3 class="certificate-title">AWS Cloud Practitioner Essentials</h3>
+                <p class="certificate-org">Amazon Web Services</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Fundamentals of AWS Cloud services</p>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="certificate-title">Fundamentals of LLMs</h3>
+                <p class="certificate-org">The LLM Course - Hugging Face</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Completed: June 4, 2025</p>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i class="fab fa-java"></i>
+                </div>
+                <h3 class="certificate-title">Java (Basic)</h3>
+                <p class="certificate-org">HackerRank</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Basic Java programming concepts and problem-solving</p>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3 class="certificate-title">Python (Basic)</h3>
+                <p class="certificate-org">HackerRank</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Basic Python programming concepts and problem-solving</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background: var(--bg-white);">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>sakshitiwari2441@gmail.com</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>+91-9522902441</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>Indore, Madhya Pradesh</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/sakshi-tiwari-6464522ab" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/sakshitiwariii" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://leetcode.com/u/Sakshi_Tiwari2441/" target="_blank"><i class="fas fa-code"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sakshi Tiwari. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Built with passion for AI and Innovation</p>
+    </footer>
+</body>
+</html>
